@@ -69,6 +69,7 @@ npx expo start
 
 4. Open the app on your device or emulator (iOS / Android)
 
+```bash
 src/
 ├─ components/          # Reusable UI components (e.g., ThemedButton)
 ├─ db/                  # SQLite database helper
@@ -76,7 +77,7 @@ src/
 ├─ screens/             # SplashScreen, ListScreen, FormScreen
 ├─ store/               # Redux slice and store configuration
 ├─ types/               # TypeScript interfaces (Item)
-
+```
 
 ## Redux State
 The app uses Redux Toolkit to manage task state:
