@@ -5,11 +5,10 @@ import * as db from '../db/database';
 
 interface ItemsState {
   items: Item[];
-  loading: boolean;
   error?: string | null;
 }
 
-const initialState: ItemsState = { items: [], loading: false };
+const initialState: ItemsState = { items: []};
 
 export const loadItems = createAsyncThunk('items/load', async () => {
   const data = await db.fetchItems();

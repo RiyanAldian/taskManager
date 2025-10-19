@@ -23,11 +23,6 @@ export default function AppNavigator(navigation:any) {
         <Stack.Screen 
           name="List"
           component={ListScreen}
-          options={{
-            title: 'List Data', 
-            headerStyle: { backgroundColor: '#007bff' },
-            headerTintColor: '#fff',
-          }}
         />
         <Stack.Screen 
           name="Form"
