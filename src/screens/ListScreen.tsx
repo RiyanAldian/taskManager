@@ -30,7 +30,6 @@ export default function ListScreen({ navigation }: Props) {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Daftar Task</Text>
-        <ThemedButton title="Tambah" onPress={() => navigation.navigate('Form')} />
       </View>
       <FlatList
         data={items}
@@ -47,6 +46,12 @@ export default function ListScreen({ navigation }: Props) {
         </TouchableOpacity>
         )}
       />
+      <TouchableOpacity
+        style={styles.fab}
+        onPress={() => navigation.navigate('Form')}
+      >
+        <Text style={styles.fabText}>＋</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -85,5 +90,23 @@ const styles = StyleSheet.create({
   deleteText: {
     color: '#fff',
     fontWeight: '600',
-  }
+  },
+  fab: {
+    position: 'absolute',
+    bottom: 50,
+    right: 25,
+    backgroundColor: '#007bff',
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 5,
+  },
+  fabText: {
+    color: '#fff',
+    fontSize: 28,
+    lineHeight: 28,
+    fontWeight: 'bold',
+  },
 });
