@@ -13,10 +13,9 @@ export const initDatabase = async () => {
       created_at TEXT DEFAULT CURRENT_TIMESTAMP
     );
   `);
-  console.log('✅ Database siap digunakan');
 };
 
-export const getItems = async (): Promise<Item[]> => {
+export const fetchItems = async (): Promise<Item[]> => {
   if (!db) db = await SQLite.openDatabaseAsync('items.db');
   const rows = await db.getAllAsync<Item>('SELECT * FROM items ORDER BY id DESC');
   return rows;
@@ -28,16 +27,14 @@ export const insertItem = async (item: Item) => {
     item.title,
     item.description,
   ]);
-  console.log('✅ Item berhasil disimpan');
 };
 
 export const updateItem = async (item: Item) => {
   if (!db) db = await SQLite.openDatabaseAsync('items.db');
-  await db.runAsync('UPDATE items SET title = ?, description = ? WHERE id = ?', [
-    item.title,
-    item.description,
-    item.id,
-  ]);
+  await db.runAsync(
+    'UPDATE items SET title = ?, description = ? WHERE id = ?',
+    [item.title, item.description, item.id!]
+  );
 };
 
 export const deleteItem = async (id: number) => {
