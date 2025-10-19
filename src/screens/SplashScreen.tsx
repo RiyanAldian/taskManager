@@ -4,9 +4,9 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 
 
-export default function SplashScreen({ navigation }) {
+export default function SplashScreen({ navigation }:any) {
   useEffect(() => {
-    const timer = setTimeout(() => navigation.replace('Form'), 1500);
+    const timer = setTimeout(() => navigation.replace('List'), 1500);
     return () => clearTimeout(timer);
   }, []);
   return (
