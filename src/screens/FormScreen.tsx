@@ -71,7 +71,7 @@ export default function FormScreen({ navigation, route }: Props) {
       />
 
       <View style={{ marginTop: 20 }}>
-        <ThemedButton title="Simpan" onPress={onSave} />
+        <ThemedButton title="Simpan" color='#2b6cb0' onPress={onSave} />
       </View>
     </View>
   );

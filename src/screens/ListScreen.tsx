@@ -40,9 +40,7 @@ export default function ListScreen({ navigation }: Props) {
             <Text style={styles.itemTitle}>{item.title}</Text>
             <Text style={styles.itemDesc}>{item.description}</Text>
           </View>
-          <TouchableOpacity  style={styles.deleteButton}  onPress={() => handleDelete(item.id!)}>
-            <Text style={styles.deleteText}>Hapus</Text>
-          </TouchableOpacity>
+          <ThemedButton title="Delete" color='#e53e3e' onPress={() => handleDelete(item.id!)} />
         </TouchableOpacity>
         )}
       />
@@ -78,18 +76,6 @@ const styles = StyleSheet.create({
   itemDesc: {
     color: '#4a5568', 
     marginTop: 4 
-  },
-  deleteButton: {
-    backgroundColor: '#e53e3e',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  deleteText: {
-    color: '#fff',
-    fontWeight: '600',
   },
   fab: {
     position: 'absolute',
