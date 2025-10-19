@@ -78,8 +78,12 @@ export default function FormScreen({ navigation, route }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', padding: 16 },
-  label: { fontWeight: '600' },
+  container: { 
+    flex: 1, backgroundColor: '#fff', padding: 16 
+  },
+  label: { 
+    fontWeight: '600'
+  },
   input: {
     borderWidth: 1,
     borderColor: '#e2e8f0',

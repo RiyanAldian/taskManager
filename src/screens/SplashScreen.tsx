@@ -18,6 +18,12 @@ export default function SplashScreen({ navigation }:any) {
 
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#edf2f7' },
-  logo: { fontSize: 32, fontWeight: 'bold', color: '#2b6cb0' }
+  container: { 
+    flex: 1, 
+    justifyContent: 'center', alignItems: 'center', backgroundColor: '#edf2f7'
+  },
+  logo: { 
+    fontSize: 32, 
+    fontWeight: 'bold', color: '#2b6cb0' 
+  }
 });
