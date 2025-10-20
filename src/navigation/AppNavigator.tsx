@@ -5,7 +5,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SplashScreen from '../screens/SplashScreen';
 import ListScreen from '../screens/ListScreen';
 import FormScreen from '../screens/FormScreen';
-import { TouchableOpacity ,Text} from 'react-native';
 
 export type RootStackParamList = {
   Splash: undefined;
@@ -15,7 +14,7 @@ export type RootStackParamList = {
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-export default function AppNavigator(navigation:any) {
+export default function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>

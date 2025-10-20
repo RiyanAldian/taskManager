@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { loadItems, removeItem } from '../store/itemsSlice';
 import { AppDispatch, RootState } from '../store';
 import { StyleSheet ,Alert,Text,FlatList, TouchableOpacity,View} from 'react-native';
@@ -6,24 +6,25 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigator';
 import ThemedButton from '../components/ThemedButton';
 import { useDispatch, useSelector } from 'react-redux';
-
+import AlertModal from '../components/AlertModal';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'List'>;
 
-
 export default function ListScreen({ navigation }: Props) {
-
   const dispatch = useDispatch<AppDispatch>();
+  const [showAlert, setShowAlert] = useState(false);
   const { items } = useSelector((s: RootState) => s.items);
+
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+
   useEffect(() => { 
     dispatch(loadItems()); 
   }, []);
 
   const handleDelete = (id: number) => {
-    Alert.alert('Konfirmasi', 'Hapus data ini?', [
-      { text: 'Batal', style: 'cancel' },
-      { text: 'Hapus', style: 'destructive', onPress: () => dispatch(removeItem(id)) }
-    ]);
+    setSelectedId(id);
+    setShowAlert(true);
+    loadItems();
   };
   
   return (
@@ -44,12 +45,34 @@ export default function ListScreen({ navigation }: Props) {
           <ThemedButton title="Delete" color='#e53e3e' onPress={() => handleDelete(item.id!)} />
         </TouchableOpacity>
         )}
-         ListEmptyComponent={() => (
+        ListEmptyComponent={() => (
           <View style={styles.emptyContainer}>
             <Text style={styles.emptyText}>Tidak ada task tersedia.</Text>
           </View>
         )}
       />
+
+
+      <AlertModal
+        visible={showAlert}
+        title="Hapus Task?"
+        message="Apakah kamu yakin ingin menghapus task ini?"
+        icon="⚠️"
+        onCancel={() => {
+          setShowAlert(false);
+          setSelectedId(null);
+        }}
+        onConfirm={() => {
+          if (selectedId !== null) {
+            dispatch(removeItem(selectedId));
+            setShowAlert(false);
+            setSelectedId(null);
+          }
+        }}
+        confirmText="Hapus"
+        cancelText="Batal"
+      />
+
       <TouchableOpacity
         style={styles.fab}
         onPress={() => navigation.navigate('Form')}
@@ -63,7 +86,7 @@ export default function ListScreen({ navigation }: Props) {
 
 const styles = StyleSheet.create({
   container: { 
-    flex: 1, backgroundColor: '#fff',marginTop:50 
+    flex: 1, backgroundColor: '#fff',paddingTop:36 
   },
   header: { 
     flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 16 

@@ -1,8 +1,5 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-
-
 
 export default function SplashScreen({ navigation }:any) {
   useEffect(() => {
