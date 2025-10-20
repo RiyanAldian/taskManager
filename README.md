@@ -50,8 +50,8 @@ A simple **React Native** app built with **Expo**, **TypeScript**, **SQLite**, a
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/username/task-manager-app.git
-cd task-manager-app
+git clone https://github.com/RiyanAldian/taskManager.git
+cd taskManager
 ```
 2. Install dependencies:
 
