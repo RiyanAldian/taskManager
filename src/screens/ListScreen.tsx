@@ -31,6 +31,7 @@ export default function ListScreen({ navigation }: Props) {
       <View style={styles.header}>
         <Text style={styles.title}>Daftar Task</Text>
       </View>
+      
       <FlatList
         data={items}
         keyExtractor={(item) => String(item.id)}
@@ -42,6 +43,11 @@ export default function ListScreen({ navigation }: Props) {
           </View>
           <ThemedButton title="Delete" color='#e53e3e' onPress={() => handleDelete(item.id!)} />
         </TouchableOpacity>
+        )}
+         ListEmptyComponent={() => (
+          <View style={styles.emptyContainer}>
+            <Text style={styles.emptyText}>Tidak ada task tersedia.</Text>
+          </View>
         )}
       />
       <TouchableOpacity
@@ -94,5 +100,15 @@ const styles = StyleSheet.create({
     fontSize: 28,
     lineHeight: 28,
     fontWeight: 'bold',
+  },
+    emptyContainer: {
+    marginTop: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  emptyText: {
+    fontSize: 16,
+    color: '#999',
+    textAlign: 'center',
   },
 });
